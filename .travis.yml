@@ -1,0 +1,18 @@
+language: java
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+  - $HOME/.m2
+
+after_success:
+  - ./deploy.sh
+ 
+env:
+  global:
+    - GH_ACCOUNT=Holzschneider
+    - GH_REPOSITORY=Swinger
+    - secure: "Ob+hEULBuahWLiu4mDGFV4+FiOor7zjk5Vd5RkgJInxAf+HrV+7FAYFpuGJtwOpNL5+0ToPw43xlkYfeVljIpqIuMGJr9dY6wPdnaJFrlNrO6QeN0st5tzU65ueFdN2TgdhaGaya2t8NMIZ4Q5uHztBFCYudhFMST/r3xm8rCzDnqWvrmCQV5uVDil3zzXFA7FvPlsduw5bb05RskE2vIVbUb2AO8xmYW2HsXEPJ2clWyYCENlyDYMYQTgdjmwIoo36sPrvNoFeqwQnUjuh77fzYg59E9Vvv5J2MHITHQZgBM8OztC1agVhE+XyaAGR+WTzJEQypv7F6Hf4+A3xgA/XF1iQNiPnH/LGU7mwe5VRf+doRNEeGk+0bk7iqVapcmtS2ObpcXaM5X8cUNw/gd5qbtq+TkhO2VR7Up5BwVR3UYvm7RPOJXjMuEKotai1Fd7vA4qM7Q0MADabqoFHHvLqFVdYUH76oBTvh7evNVIi8azIQgitjhrmNE8MPvE1uHCAZB+r+rFRf+OvJTpiOD3UPuJ+8ToDZhwEq6KSPm8yVUJ2r9l5gbFRTtkI4IlqwsxYinYV1K4415JK3TAMn2TjMRQFXoIa+kT7USAhVfzEtKTVG+mTBzG/lgvvA9lRn8fIyDXPF+j6eV++tCLtT454NHXOC6amnaZ/YcmeKhkE="
