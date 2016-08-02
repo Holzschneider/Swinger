@@ -6,11 +6,10 @@ An incomplete and inconsistent collection of fancy custom javax.swing-components
 Release
 -------
 
-The base release 1.0.0 corresponds to the unmodified image processing implementation, as it's extracted from legacy projects.
+The base release 1.0.0 corresponds to the unmodified implementation, as it's extracted from several legacy projects, where it has originally evolved from.
 
-
-As usual, releases are deployed automatically to the deploy branch of this github repostory. 
-To add a dependency on *Swinger* using maven, modify your *repositories* section to include the git based repository.
+Releases are deployed automatically to the deploy branch of this github repostory. 
+To add a dependency to *Swinger* using maven, modify your *repositories* section to include the git based repository.
 
 	<repositories>
 	 ...
@@ -22,7 +21,7 @@ To add a dependency on *Swinger* using maven, modify your *repositories* section
 	...
 	</repositories>
 	
-and modify your *dependencies* section to include the graphics3d dependency
+and modify your *dependencies* section to include the dependency
  
 	  <dependencies>
 	  ...
