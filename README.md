@@ -10,7 +10,7 @@ The base release 1.0.0 corresponds to the unmodified image processing implementa
 
 
 As usual, releases are deployed automatically to the deploy branch of this github repostory. 
-To add a dependency on *BufferedImageProcessing* using maven, modify your *repositories* section to include the git based repository.
+To add a dependency on *Swinger* using maven, modify your *repositories* section to include the git based repository.
 
 	<repositories>
 	 ...
