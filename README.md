@@ -6,7 +6,7 @@ An incomplete and inconsistent collection of fancy custom javax.swing-components
 Release
 -------
 
-The base release 1.0.0 corresponds to the unmodified implementation, as it's extracted from several legacy projects, where it has originally evolved from.
+The base releases 1.x.y correspond to the unmodified implementation, as it's extracted from several legacy projects, where it has originally evolved from.
 
 Releases are deployed automatically to the deploy branch of this github repostory. 
 To add a dependency to *Swinger* using maven, modify your *repositories* section to include the git based repository.
@@ -26,9 +26,9 @@ and modify your *dependencies* section to include the dependency
 	  <dependencies>
 	  ...
 	  	<dependency>
-	  		<groupId>de.dualuse.commons</groupId>
+	  		<groupId>de.dualuse</groupId>
 	  		<artifactId>Swinger</artifactId>
-	  		<version>1.0.0</version>
+	  		<version>LATEST</version>
 	  	</dependency>
 	  ...
 	  </dependencies>
@@ -45,6 +45,6 @@ To add the repository and the dependency using gradle refer to this
 and this
 
 	dependencies {
-	  compile 'de.dualuse.commons:Swinger:1.0.+'
+	  compile 'de.dualuse:Swinger:1.0.+'
 	}
 
