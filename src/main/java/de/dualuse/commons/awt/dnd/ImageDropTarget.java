@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
 
-public class ImageDropTarget extends FileDropTarget {
+public abstract class ImageDropTarget extends FileDropTarget {
 	static final FileFilter IMAGE_FILE_FILTER = new FileFilter() {
 		@Override public boolean accept(File pathname) {
 			return true;
@@ -38,15 +38,12 @@ public class ImageDropTarget extends FileDropTarget {
 		return false;	
 	}
 	
-	@Override public boolean receive(Point dropLocation, File file) throws Exception {
-		return receive(dropLocation,ImageIO.read(file));
+	@Override final public boolean receive(Point dropLocation, File... file) throws Exception {
+		return receive(dropLocation,ImageIO.read(file[0]));
 	}
 	
-	final @Override public boolean receive(Point dropLocation, File... files) throws Exception {
-		return super.receive(dropLocation, files);
-	}
 	
-	public boolean receive(Point dropLocation, Image dropped) throws Exception { return true; }
+	abstract public boolean receive(Point dropLocation, Image dropped) throws Exception;
 	
 	
 }

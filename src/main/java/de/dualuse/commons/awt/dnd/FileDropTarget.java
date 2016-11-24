@@ -28,8 +28,7 @@ public abstract class FileDropTarget extends DropTarget {
 	public FileDropTarget(final String nameFilterRegExp, JComponent target) { this(new FileFilter() { public boolean accept(File pathname) { return pathname.getName().matches(nameFilterRegExp); } }, target); }
 
 	
-	public boolean receive(Point dropLocation, File file) throws Exception { return false; };
-	public boolean receive(Point dropLocation, File... files) throws Exception { return receive(dropLocation, files[0]); }
+	public abstract boolean receive(Point dropLocation, File... files) throws Exception;
 	
 	protected boolean receive(DropTargetDropEvent dtde) throws Exception {
 		List<?> files = ((List<?>)dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
