@@ -12,7 +12,7 @@ import java.util.List;
 
 //XXX TODO make it work on Android!
 @SuppressWarnings("unchecked")
-public class Sticky<T extends Serializable> implements Serializable {
+class Sticky<T extends Serializable> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	static String APP = new LinkedList<Class<?>>(Arrays.asList(new SecurityManager() { protected Class<?>[] getClassContext() { return super.getClassContext(); } }.getClassContext())).getLast().getName();
