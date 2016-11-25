@@ -1,36 +1,49 @@
 package de.dualuse.commons.awt.dnd;
 
-import java.awt.Point;
+import java.awt.Component;
 import java.awt.datatransfer.DataFlavor;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetDropEvent;
-import java.io.*;
+import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JComponent;
 
-public abstract class FileDropTarget extends DropTarget {
+public class FileDropTarget extends AbstractDropTarget<File[]> implements DropListener<File[]>{
+	private static FileFilter DEFAULT_FILTER = new FileFilter() { public boolean accept(File pathname) { return true; } };
 	private static final long serialVersionUID = 1L;
-	
-	static FileFilter DEFAULT_FILTER = new FileFilter() { public boolean accept(File pathname) { return true; } };
-	
-	final FileFilter filter;
-	
+
+	private final FileFilter filter;
+
 	public FileDropTarget() { this(DEFAULT_FILTER); }
 	public FileDropTarget(FileFilter f) { this.filter = f; }
 	public FileDropTarget(final String nameFilterRegExp) { this(new FileFilter() { public boolean accept(File pathname) { return pathname.getName().matches(nameFilterRegExp); } }); }
-	
 
-	public FileDropTarget(JComponent target) { this(DEFAULT_FILTER); target.setDropTarget(this); }
-	public FileDropTarget(FileFilter f, JComponent target) { this.filter = f; target.setDropTarget(this); }
-	public FileDropTarget(final String nameFilterRegExp, JComponent target) { this(new FileFilter() { public boolean accept(File pathname) { return pathname.getName().matches(nameFilterRegExp); } }, target); }
+	public FileDropTarget(DropListener<File[]> listener) { this(DEFAULT_FILTER); setListener(listener); }
+	public FileDropTarget(FileFilter f, DropListener<File[]> listener) { this.filter = f; setListener(listener);}
+	public FileDropTarget(final String nameFilterRegExp, DropListener<File[]> listener) { 
+		this(new FileFilter() { public boolean accept(File pathname) { return pathname.getName().matches(nameFilterRegExp); } });
+		setListener(this);
+	}
+
+	public FileDropTarget(Component c) { super(c); filter = DEFAULT_FILTER; }
+	public FileDropTarget(Component c, FileFilter f) { super(c); this.filter = f; }
+	public FileDropTarget(Component c, final String nameFilterRegExp) { 
+		super(c);
+		this.filter = new ExpressionFilter(nameFilterRegExp);
+	}
+
+	public FileDropTarget(Component c, DropListener<File[]> listener) { super(c); this.filter= DEFAULT_FILTER; setListener(listener); }
+	public FileDropTarget(Component c, FileFilter f, DropListener<File[]> listener) { super(c); this.filter = f; setListener(listener);}
+	public FileDropTarget(Component c, final String nameFilterRegExp, DropListener<File[]> listener) {
+		super(c);
+		this.filter = new ExpressionFilter(nameFilterRegExp);
+		setListener(this);
+	}
 
 	
-	public abstract boolean receive(Point dropLocation, File... files) throws Exception;
-	
-	protected boolean receive(DropTargetDropEvent dtde) throws Exception {
+	@Override
+	public File[] unpack(DropTargetDropEvent dtde) throws Exception {
 		List<?> files = ((List<?>)dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor));
 		ArrayList<File> acceptedFiles = new ArrayList<File>(files.size());
 		
@@ -40,15 +53,17 @@ public abstract class FileDropTarget extends DropTarget {
 				acceptedFiles.add(file);
 		}
 		
-		if (acceptedFiles.isEmpty()) return false;
-		return receive(dtde.getLocation(), acceptedFiles.toArray(new File[acceptedFiles.size()]));		
+		return acceptedFiles.toArray(new File[acceptedFiles.size()]);
 	}
 	
-	@Override final public synchronized void drop(final DropTargetDropEvent dtde) {
-		dtde.acceptDrop(DnDConstants.ACTION_LINK);
-		try {
-			dtde.dropComplete(receive(dtde));
-		} catch (Exception e) { e.printStackTrace(); dtde.dropComplete(false); }
+	private static class ExpressionFilter implements FileFilter {
+		final String nameFilterRegExp;
+		public ExpressionFilter(String expression) {
+			this.nameFilterRegExp= expression;
+		}
+		
+		public boolean accept(File pathname) { 
+			return pathname.getName().matches(nameFilterRegExp); 
+		} 
 	}
-
 }
