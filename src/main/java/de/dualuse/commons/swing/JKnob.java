@@ -100,7 +100,9 @@ public class JKnob extends JComponent  {
 		if (getParent()!=null)
 			getParent().repaint();
 
-		super.setLocation( (int)(ix-this.getWidth()/2.0), (int)(iy-this.getHeight()/2.0));
+		
+		super.setLocation( (int)(ix-this.getWidth()/2.0), (int)(iy-this.getHeight()/2.0)); //XXX this overwrites location with integer coordinates 
+		center.setLocation(cx,cy);  //reset to exact location
 	}
 	
 	public double getCenterX() { 
