@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.dualuse</groupId>
+	<artifactId>Swinger</artifactId>
+	<version>1.2.0</version>
+	<build>
+		<plugins>
+			<plugin>
+				<version>3.5.1</version>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<version>3.0.1</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>de.dualuse.commons</groupId>
+			<artifactId>Graphics3D</artifactId>
+			<version>[1.0,2.0)</version>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>Graphics3D-Repository</id>
+			<name>Holzschneider's Git based repo</name>
+			<url>https://raw.githubusercontent.com/Holzschneider/Graphics3D/deploy/</url>
+		</repository>
+	</repositories>
+</project>
