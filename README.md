@@ -14,9 +14,9 @@ To add a dependency to *Swinger* using maven, modify your *repositories* section
 	<repositories>
 	 ...
 	  <repository>
-	    <id>Swinger-Repository</id>
-	    <name>Swinger's Git-based repo</name>
-	    <url>https://raw.githubusercontent.com/Holzschneider/Swinger/deploy/</url>
+	    <id>dualuse repository</id>
+	    <name>dualuse's git based repo</name>
+	    <url>https://dualuse.github.io/maven/</url>
 	  </repository>
 	...
 	</repositories>
@@ -28,7 +28,7 @@ and modify your *dependencies* section to include the dependency
 	  	<dependency>
 	  		<groupId>de.dualuse</groupId>
 	  		<artifactId>Swinger</artifactId>
-	  		<version>LATEST</version>
+	  		<version>[1,)</version>
 	  	</dependency>
 	  ...
 	  </dependencies>
@@ -45,6 +45,6 @@ To add the repository and the dependency using gradle refer to this
 and this
 
 	dependencies {
-	  compile 'de.dualuse:Swinger:1.0.+'
+	  compile 'de.dualuse:Swinger:1.+'
 	}
 
