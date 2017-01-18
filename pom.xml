@@ -34,9 +34,9 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>de.dualuse.commons</groupId>
+			<groupId>de.dualuse</groupId>
 			<artifactId>Graphics3D</artifactId>
-			<version>[1,)</version>
+			<version>1.1.0</version>
 		</dependency>
 	</dependencies>
 	<repositories>
