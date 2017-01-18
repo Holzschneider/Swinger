@@ -3,8 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dualuse</groupId>
 	<artifactId>Swinger</artifactId>
-	<version>1.2.0</version>
+	<version>1.4.0</version>
 	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<version>3.5.1</version>
@@ -34,14 +36,14 @@
 		<dependency>
 			<groupId>de.dualuse.commons</groupId>
 			<artifactId>Graphics3D</artifactId>
-			<version>[1.0,2.0)</version>
+			<version>[1,)</version>
 		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>Graphics3D-Repository</id>
-			<name>Holzschneider's Git based repo</name>
-			<url>https://raw.githubusercontent.com/Holzschneider/Graphics3D/deploy/</url>
+			<id>dualuse repository</id>
+			<name>dualuse's git based repo</name>
+			<url>https://dualuse.github.io/maven/</url>
 		</repository>
 	</repositories>
 </project>
