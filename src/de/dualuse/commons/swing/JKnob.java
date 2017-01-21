@@ -236,13 +236,14 @@ public class JKnob extends JComponent  {
 			public void mouseDragged(MouseEvent e) {
 				int dx = e.getXOnScreen()-lastXOnScreen, dy = e.getYOnScreen()-lastYOnScreen;
 				
+				double cx = getCenterX(), cy = getCenterY();
+				
 				setLocation(getX()+dx, getY()+dy);
 				lastXOnScreen = e.getXOnScreen();
 				lastYOnScreen = e.getYOnScreen();
 				
 				for (Listener l: kls)
-					l.knobMoved(JKnob.this, dx, dy);
-//					l.knobMoved(getCenterX(), getCenterY());
+					l.knobMoved(JKnob.this, getCenterX()-cx, getCenterY()-cy);
 				
 				for (JComponent l: consumers)
 					l.repaint();
