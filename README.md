@@ -1,5 +1,5 @@
 # Swinger
-An incomplete and inconsistent collection of fancy custom javax.swing-components only mac users ever missed.
+An incomplete and inconsistent collection of fancy custom javax.swing-components only mac users ever missed!
 
 
 
